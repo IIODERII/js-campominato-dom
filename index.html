@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/style.css">   
     <title>Griglia Campo Minato</title>
 </head>
@@ -11,10 +12,24 @@
 
     <h1 class="text-center py-5">Campo minato</h1>
 
+    <div id="score" class="fw-bold fs-3 text-center pb-3"></div>
+
+    <div class="text-center" id="select-container">
+        <label for="difficulty">Scegli la difficoltà</label>
+
+        <select class="form-select w-25 mx-auto my-4" id="difficulty" name="difficulty">
+            <option selected value="100">Facile</option>
+            <option value="81">Medio</option>
+            <option value="49">Difficile</option>
+        </select>
+    </div>
+
     <div id="playground" class="border-white d-none"></div>
 
 
     <button class="btn btn-light mt-3 mx-auto d-block" id="start">Gioca</button>
+
+    <button class="btn btn-light mt-3 mx-auto d-block d-none" id="resume">Torna alla scelta della difficoltà</button>
 
     <script src="js/script.js"></script>
 </body>
