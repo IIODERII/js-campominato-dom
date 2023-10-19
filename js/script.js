@@ -9,6 +9,8 @@
         const returntbtn = document.getElementById('resume');
 
         const playground = document.getElementById('playground');
+        const scoreContainer = document.getElementById('score');
+        const selectContainer = document.getElementById('select-container');
 
         let bombList = [] ;
         let score;
@@ -24,19 +26,19 @@
             startbtn.classList.add('d-none');
             playground.classList.remove('d-none') ;
             returntbtn.classList.remove('d-none') ;
-            document.getElementById('score').className = 'fw-bold fs-3 text-center p-3 d-inline-block mx-auto rounded-3';
+            scoreContainer.className = 'fw-bold fs-3 text-center p-3 d-inline-block mx-auto rounded-3';
 
             const numSquare = parseInt(document.getElementById('difficulty').value);           
             maxClick = numSquare - NUM_BOMBE ;
 
             score = 0 ;
-            document.getElementById('score').innerHTML = `Punteggio: ${score}`;
+            scoreContainer.innerHTML = `Punteggio: ${score}`;
 
             generaBombe(numSquare);
 
-            console.log(bombList.sort());
+            //console.log(bombList.sort());
             
-            document.getElementById('select-container').classList.add('d-none');
+            selectContainer.classList.add('d-none');
 
             for(let i = 1 ; i <= numSquare ; i++){
                 square = createSquare(i , numSquare);
@@ -50,8 +52,8 @@
             startbtn.classList.remove('d-none');
             returntbtn.classList.add('d-none');
             playground.classList.add('d-none') ;    
-            document.getElementById('select-container').classList.remove('d-none');
-            document.getElementById('score').className = 'd-none';
+            selectContainer.classList.remove('d-none');
+            scoreContainer.className = 'd-none';
 
             bombList = [] ;
         })
@@ -82,7 +84,7 @@
                         console.log(squareIndex);
                         square.removeEventListener('click' , colorSquare);
                         score++ ;
-                        document.getElementById('score').innerHTML = `Punteggio: ${score}`;
+                        scoreContainer.innerHTML = `Punteggio: ${score}`;
     
                         if(score === maxClick){
                             gameOver(youLose);
@@ -115,14 +117,14 @@
 
             if(youLose && score < maxClick){
 
-                document.getElementById('score').classList.add('bg-danger');
-                document.getElementById('score').innerHTML = `
+                scoreContainer.classList.add('bg-danger');
+                scoreContainer.innerHTML = `
                     Peccato hai perso. <br>
                     Punteggio: ${score}
                 `;
             }else{
-                document.getElementById('score').classList.add('bg-success');
-                document.getElementById('score').innerHTML = `
+                scoreContainer.classList.add('bg-success');
+                scoreContainer.innerHTML = `
                     Complimenti Hai vinto!!! <br>
                     Punteggio: ${score}
                 `;
