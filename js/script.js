@@ -11,16 +11,20 @@
         const playground = document.getElementById('playground');
         const scoreContainer = document.getElementById('score');
         const selectContainer = document.getElementById('select-container');
-
+        
+        let squareList;
         let bombList = [] ;
         let score;
         let youLose;
         let square;
-        let maxClick
+        let maxClick;
+        let squareArray = [] ;
 
         //bottone per iniziare il gioco
         startbtn.addEventListener('click', function() {
             youLose = false;
+
+            squareList = document.getElementsByClassName('square');
 
             playground.innerHTML = '' ;
             startbtn.classList.add('d-none');
@@ -56,6 +60,7 @@
             scoreContainer.className = 'd-none';
 
             bombList = [] ;
+            squareArray = [] ;
         })
 
 
@@ -80,11 +85,23 @@
                         youLose = true ;
                         gameOver();
                     }else{
-                        square.classList.add('active');
-                        console.log(squareIndex);
-                        square.removeEventListener('click' , colorSquare);
                         score++ ;
                         scoreContainer.innerHTML = `Punteggio: ${score}`;
+
+                        for(let i = 0 ; i < squareList.length ; i++){
+                            squareArray.push(squareList[i]);
+                            //console.log(squareIndex);
+                        }
+                        for(let i = 0 ; i < squareList.length ; i++){
+                            squareCurrentIndex = squareArray.indexOf(square)
+                            //console.log(squareCurrentIndex);
+                            //console.log(squareList);
+                            if(i === squareCurrentIndex || ((i === squareCurrentIndex + 1) && (!bombList.includes(squareCurrentIndex + 1 + 1))) || ((i === squareCurrentIndex - 1) && (!bombList.includes(squareCurrentIndex-1+1))) || ((i === squareCurrentIndex + squareWidth) && (!bombList.includes(squareCurrentIndex + squareWidth+1))) || ((i === squareCurrentIndex + (squareWidth + 1)) && (!bombList.includes(squareCurrentIndex + (squareWidth + 1)+1))) || ((i === squareCurrentIndex + (squareWidth - 1)) && (!bombList.includes(squareCurrentIndex + (squareWidth - 1)+1))) || ((i === squareCurrentIndex - (squareWidth + 1)) && (!bombList.includes(squareCurrentIndex - (squareWidth + 1)+1))) || ((i === squareCurrentIndex - squareWidth) && (!bombList.includes(squareCurrentIndex - squareWidth+1))) || ((i === squareCurrentIndex - (squareWidth - 1)) && (bombList.includes(squareCurrentIndex - (squareWidth - 1)+1)))){                              
+                                squareList[i].classList.add('active');
+                                //console.log(squareIndex);
+                                squareList[i].removeEventListener('click' , colorSquare);
+                            }
+                        }
     
                         if(score === maxClick){
                             gameOver();
@@ -113,13 +130,13 @@
         }
 
         function gameOver(){
-            const squareList = document.getElementsByClassName('square');
+            //const squareList = document.getElementsByClassName('square');
 
             if(youLose && score < maxClick){
 
                 scoreContainer.classList.add('bg-danger');
                 scoreContainer.innerHTML = `
-                    Peccato hai perso. <br>
+                    Peccato hai perso <br>
                     Punteggio: ${score}
                 `;
             }else{
