@@ -4,12 +4,13 @@
     margin: 30px auto;
     display: flex;
     flex-wrap: wrap;
+    border: 2px solid black;
 }
 
 .square{
     height: calc(100% / 8);
     width: calc(100% / 8);
-    border: 2px solid white;
+    border: 2px solid black;
     color: white;
     font-weight: bold;
     display: flex;
@@ -20,5 +21,10 @@
 
 .active{
     background-color: cyan;
+    color: black;
+}
+
+.bomb{
+    background-color: red;
     color: black;
 }

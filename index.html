@@ -8,11 +8,11 @@
     <link rel="stylesheet" href="css/style.css">   
     <title>Griglia Campo Minato</title>
 </head>
-<body class="bg-secondary text-white">
+<body class="bg-secondary text-white text-center">
 
     <h1 class="text-center py-5">Campo minato</h1>
 
-    <div id="score" class="fw-bold fs-3 text-center pb-3"></div>
+    <div id="score" class="fw-bold fs-3 text-center p-3 d-inline-block mx-auto rounded-3"></div>
 
     <div class="text-center" id="select-container">
         <label for="difficulty">Scegli la difficoltà</label>
@@ -24,12 +24,12 @@
         </select>
     </div>
 
-    <div id="playground" class="border-white d-none"></div>
+    <div id="playground" class="d-none"></div>
 
 
     <button class="btn btn-light mt-3 mx-auto d-block" id="start">Gioca</button>
 
-    <button class="btn btn-light mt-3 mx-auto d-block d-none" id="resume">Torna alla scelta della difficoltà</button>
+    <button class="btn btn-light mt-3 mx-auto d-block d-none mb-3" id="resume">Torna alla scelta della difficoltà</button>
 
     <script src="js/script.js"></script>
 </body>
