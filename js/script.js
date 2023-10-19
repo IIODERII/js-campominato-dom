@@ -36,7 +36,7 @@
 
             generaBombe(numSquare);
 
-            //console.log(bombList.sort());
+            console.log(bombList.sort());
             
             selectContainer.classList.add('d-none');
 
@@ -78,7 +78,7 @@
                         square.innerHTML = '<i class="fa-solid fa-bomb fa-beat"></i>' ;
                         console.log('BOMBA');
                         youLose = true ;
-                        gameOver(youLose);
+                        gameOver();
                     }else{
                         square.classList.add('active');
                         console.log(squareIndex);
@@ -87,7 +87,7 @@
                         scoreContainer.innerHTML = `Punteggio: ${score}`;
     
                         if(score === maxClick){
-                            gameOver(youLose);
+                            gameOver();
                         }
                     }
                 }else{
@@ -112,7 +112,7 @@
             return Math.floor(Math.random() * (max - min + 1) ) + min;
         }
 
-        function gameOver(youLose){
+        function gameOver(){
             const squareList = document.getElementsByClassName('square');
 
             if(youLose && score < maxClick){
